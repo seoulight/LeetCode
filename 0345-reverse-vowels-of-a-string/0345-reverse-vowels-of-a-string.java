@@ -4,22 +4,27 @@ class Solution {
         return "aeiouAEIOU".contains(String.valueOf(c));
     }
     
+    public void swap(char[] chars, int x, int y) {
+        char tmp = chars[x];
+        chars[x] = chars[y];
+        chars[y] = tmp;
+    }
+    
     public String reverseVowels(String s) {
-        StringBuilder answer = new StringBuilder(s);
-        int i = 0, j = answer.length() - 1;
+        char[] answer = s.toCharArray();
+        int start = 0, end = s.length() - 1;
         
-        while (i < j) {
-            while (i < s.length() && !isVowels(answer.charAt(i))) {
-                i++;
+        while (start < end) {
+            while (start < s.length() && !isVowels(answer[start])) {
+                start++;
             }
-            while (j >= 0 && !isVowels(answer.charAt(j))) {
-                j--;
+            while (end >= 0 && !isVowels(answer[end])) {
+                end--;
             }
-            if (i < j) {
-                answer.setCharAt(i, s.charAt(j));
-                answer.setCharAt(j--, s.charAt(i++));
+            if (start < end) {
+                swap(answer, start++, end--);
             }
         }
-        return answer.toString();
+        return new String(answer);
     }
 }
