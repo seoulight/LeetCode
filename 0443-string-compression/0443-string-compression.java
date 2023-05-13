@@ -1,7 +1,6 @@
 class Solution {
     public int compress(char[] chars) {
         int i = 0, totalLen = 0, nextIdx = 0;
-        StringBuilder sb = new StringBuilder();
         
         while (i < chars.length) {
             int cnt = 1;
