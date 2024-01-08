@@ -7,18 +7,13 @@
 class Solution:
     def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
         answer = 0
-        def visit(node: Optional[TreeNode]):
+        def dfs(node: Optional[TreeNode]) -> int:
             if not node:
-                return
+                return 0
+            current_val = 0
             if low <= node.val <= high:
-                nonlocal answer
-                answer += node.val
-            if low == node.val:
-                visit(node.right)
-            elif high == node.val:
-                visit(node.left)
-            else:
-                visit(node.left)
-                visit(node.right)
-        visit(root)
-        return answer
+                current_val = node.val
+            left_sum = dfs(node.left)
+            right_sum = dfs(node.right)
+            return current_val + left_sum + right_sum
+        return dfs(root)
