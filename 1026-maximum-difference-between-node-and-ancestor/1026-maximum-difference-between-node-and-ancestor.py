@@ -9,9 +9,9 @@ class Solution:
         def diff(root: Optional[TreeNode], min_val: int, max_val: int) -> int:
             if not root:
                 return 0
+            curr_diff = max(abs(min_val - root.val), abs(max_val - root.val))
             min_val = min(min_val, root.val)
             max_val = max(max_val, root.val)
-            curr_diff = max(abs(min_val - root.val), abs(max_val - root.val))
             max_left = diff(root.left, min_val, max_val)
             max_right = diff(root.right, min_val, max_val)
             return max(curr_diff, max(max_left, max_right))
