@@ -1,14 +1,6 @@
 from collections import defaultdict, deque
 
-class Solution:
-    def gcd(self, num1: int, num2: int) -> int:
-        large = max(num1, num2)
-        small = min(num1, num2)
-        
-        while large % small > 0:
-            small = large % small
-        return small
-        
+class Solution:        
     def canTraverseAllPairs(self, nums: List[int]) -> bool:
         prime2index = defaultdict(list)
         index2prime = defaultdict(list)
