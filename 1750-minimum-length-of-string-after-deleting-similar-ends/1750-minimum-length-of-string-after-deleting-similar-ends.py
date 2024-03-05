@@ -1,17 +1,16 @@
 class Solution:
     def minimumLength(self, s: str) -> int:
-        s_temp = s
-        while len(s_temp) > 1:
-            prefix = s_temp[0]
-            l, r = 0, len(s_temp) - 1
-            if l >= len(s_temp) or r < 0 or s_temp[l] != s_temp[r]:
+        while len(s) > 1:
+            prefix = s[0]
+            l, r = 0, len(s) - 1
+            if l >= len(s) or r < 0 or s[l] != s[r]:
                 break
-            while l < len(s_temp) and s_temp[l] == prefix:
+            while l < len(s) and s[l] == prefix:
                 l += 1
-            while 0 <= r and s_temp[r] == prefix:
+            while 0 <= r and s[r] == prefix:
                 r -= 1
-            s_temp = s_temp[l:r+1]
-        return len(s_temp)
+            s = s[l:r+1]
+        return len(s)
             
                 
             
